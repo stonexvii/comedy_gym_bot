@@ -16,7 +16,7 @@ command_router.message.middleware(UserMiddleware())
 async def command_start(message: Message, user: User):
     if user and user.registered:
         msg_text = await FileManager.read(Path.REGISTERED, name=message.from_user.full_name)
-        keyboard = None
+        keyboard = ikb_start(url=True)
     else:
         msg_text = await FileManager.read(Path.START_COMMAND, name=message.from_user.full_name)
         keyboard = ikb_start(about=True)
